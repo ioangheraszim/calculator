@@ -1,7 +1,104 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
 
+:root {
+    --lighter-blue: #252544;
+    --light-blue: #3B4664;
+    --dark-blue: #181f32;
+    --red: #d13f30;
+    --buttons-color: #EAE3DB;
+    --white: #FFFFFF;
+}
+
 *, ::before, ::after {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat", serif; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: var(--light-blue);
+}
+
+.container {
+    width: min(100% - 1rem, 375px);
+    margin: 0 auto;
+}
+
+.container_header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.25rem 0;
+    color: var(--white);
+    font-size: 1.25rem;
+    font-weight: 700;
+}
+
+.container_display-result {
+    background-color: var(--dark-blue);
+    padding: 1.25rem ;
+    border-radius: 5px;
+    text-align: right;
+    color: var(--white);
+    font-size: 2rem;
+    font-weight: 700;
+    margin: .75rem 0;
+}
+
+.container_buttons {
+    background-color: var(--lighter-blue);
+    border-radius: 5px;
+}
+
+.container_buttons-numbers {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 1rem .5rem;
+}
+
+
+button {
+    font-size: 1rem;
+    font-weight: 700;
+    width: 70px;
+    height: 40px;
+    background-color: var(--white);
+    border: none;
+    outline: none;
+    border-radius: 7px;
+    box-shadow: 1px 2px 1px 1px #b3a299;
+}
+
+.container_buttons-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: .5rem;
+}
+
+.container_buttons-numbers--reset, .container_buttons-numbers--equals {
+    width: 100%;   
+    color: var(--white);
+    border: none;
+    outline: none;
+    margin: 1rem 0;
+}
+
+.container_buttons-numbers--reset{
+    background-color: var(--light-blue);
+    box-shadow: 1px 2px 1px 1px #4D5981;
+}
+
+.container_buttons-numbers--equals {
+    margin-left: 1rem;
+    background-color: var(--red);
+    box-shadow: 1px 2px 1px 1px #a92e20;    
 }
