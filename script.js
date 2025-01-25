@@ -40,6 +40,7 @@ function divide(a, b) {
     return a / b;
 }
 
+// Operate function for basic math
 function operate(operator, a, b){
     switch(operator) {
         case '+':
@@ -54,3 +55,12 @@ function operate(operator, a, b){
             return null;
     }
 }
+
+const updateDisplay = () => display.textContent = displayValue;
+
+buttons.forEach(button => {
+    const btn = document.createElement("button");
+    btn.value = button;
+    btn.textContent = button;
+    buttonsContainer.appendChild(btn);
+})
