@@ -58,6 +58,41 @@ function operate(operator, a, b){
 
 const updateDisplay = () => display.textContent = displayValue;
 
+const isOperator = (value) => ['+', '-', '*', '/'].includes(value);
+
+function handleButtonClick(button) {
+    if(isOperator(button)){
+        if(firstNumber !== '' && secondNumber !== '' && initialValue === false){
+            secondNumber = displayValue;
+            displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber));
+            firstNumber = displayValue;
+            secondNumber = '';
+        } else {
+            firstNumber = displayValue;
+        }
+        currentOperator = button;
+        initialValue = true;
+    } else if (button === '=') {
+        if((firstNumber !== '' && secondNumber !== '' && initialValue === false)){
+            secondNumber = displayValue;
+            displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber));
+            firstNumber = displayValue;
+            secondNumber = '';
+        } else {
+            displayValue += button;
+        }
+    } else {
+        if(initialValue) {
+            displayValue = button;
+            initialValue = false;
+        } else {
+            displayValue += button;
+        }
+    }
+
+    updateDisplay();
+}
+
 buttons.forEach(button => {
     const btn = document.createElement("button");
     btn.value = button;
