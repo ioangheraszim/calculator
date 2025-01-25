@@ -64,7 +64,6 @@ body {
     padding: 1rem .5rem;
 }
 
-
 button {
     font-size: 1rem;
     font-weight: 700;
@@ -77,11 +76,15 @@ button {
     box-shadow: 1px 2px 1px 1px #b3a299;
 }
 
+button:active {
+    box-shadow: none;
+}
+
 .container_buttons-controls {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: .5rem;
+    padding: 0rem 1rem;
 }
 
 .container_buttons-numbers--reset, .container_buttons-numbers--equals {
