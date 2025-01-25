@@ -63,10 +63,10 @@ const updateDisplay = () => display.textContent = displayValue;
 const isOperator = (value) => ['+', '-', '*', '/'].includes(value);
 
 function handleButtonClick(button) {
-    if(isOperator(button)){
-        if(firstNumber !== '' && secondNumber !== '' && initialValue === false){
+    if (isOperator(button)) {
+        if (firstNumber !== '' && currentOperator !== '' && !initialValue) {
             secondNumber = displayValue;
-            displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber));
+            displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber)).toString();
             firstNumber = displayValue;
             secondNumber = '';
         } else {
@@ -74,25 +74,44 @@ function handleButtonClick(button) {
         }
         currentOperator = button;
         initialValue = true;
-    } else if (button === '=') {
-        if((firstNumber !== '' && secondNumber !== '' && initialValue === false)){
+        updateDisplay();
+    } else if (button === "DEL") {
+        if (displayValue.length > 1) {
+            displayValue = displayValue.slice(0, -1);
+        } else {
+            displayValue = '0';
+            initialValue = true;
+        }
+        if (currentOperator !== '') {
             secondNumber = displayValue;
-            displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber));
+        } else {
+            firstNumber = displayValue;
+        }
+        updateDisplay();
+    } else if (button === "=") {
+        if (firstNumber !== '' && currentOperator !== '' && !initialValue) {
+            secondNumber = displayValue;
+            displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber)).toString();
             firstNumber = displayValue;
             secondNumber = '';
-        } else {
+            currentOperator = '';
+            initialValue = true;
+            updateDisplay();
+        }
+    } else if (button === ".") {
+        if (!displayValue.includes('.')) {
             displayValue += button;
+            updateDisplay();
         }
     } else {
-        if(initialValue) {
+        if (initialValue) {
             displayValue = button;
             initialValue = false;
         } else {
             displayValue += button;
         }
+        updateDisplay();
     }
-
-    updateDisplay();
 }
 
 buttons.forEach(button => {
