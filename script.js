@@ -12,6 +12,8 @@ let firstNumber = '';
 let secondNumber = '';
 let currentOperator = '';
 
+display.textContent = displayValue;
+
 // Button array
 const buttons = [
     '7', '8', '9', 'DEL',
@@ -97,5 +99,33 @@ buttons.forEach(button => {
     const btn = document.createElement("button");
     btn.value = button;
     btn.textContent = button;
+
+    btn.addEventListener("click", () => {
+        handleButtonClick(button);
+    });
+
     buttonsContainer.appendChild(btn);
 })
+
+// Event listener for the RESET button
+reset.addEventListener("click", () => {
+    displayValue = '0';
+    initialValue = true;
+    firstNumber = '';
+    secondNumber = '';
+    currentOperator = '';
+    updateDisplay();
+});
+
+// Event listener for the EQUALS button
+equals.addEventListener("click", () => {
+    if (firstNumber !== '' && currentOperator !== '' && !initialValue) {
+        secondNumber = displayValue;
+        displayValue = operate(currentOperator, parseFloat(firstNumber), parseFloat(secondNumber)).toString();
+        firstNumber = displayValue;
+        secondNumber = '';
+        currentOperator = '';
+        initialValue = true;
+        updateDisplay();
+    }
+});
