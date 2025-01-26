@@ -5,15 +5,6 @@ A Simple Calculator
   <img src="./screenshot/calculator.png" width="50%" >
 </p>
 
-## Table of contents
-
-- [Overview](#overview)
-  - [Requirements](#the-challenge)
-  - [Links](#links)
-- [My process](#my-process)
-  - [Built with](#built-with)
-- [Author](#author)
-
 ## Overview
 
 ### Requirements
